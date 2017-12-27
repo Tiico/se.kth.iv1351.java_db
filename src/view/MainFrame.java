@@ -9,7 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class MainFrame extends JFrame {
+public class MainFrame extends JFrame implements View {
 
     // TODO Set the controller before I create the menu, otherwise null-pointer
 
@@ -95,18 +95,18 @@ public class MainFrame extends JFrame {
         menuItem1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //TODO enable this when null pointer is solved
-//                displayProducts(controller.getProducts());
-                inputArea.append(e.getActionCommand());
+//                TODO enable this when null pointer is solved
+                displayProducts(controller.getProducts());
+//                inputArea.append(e.getActionCommand());
             }
         });
         mainMenu.add(menuItem1);
 
-        JMenuItem menuItem2 = new JMenuItem("Item 2");
+        JMenuItem menuItem2 = new JMenuItem("Lägg till bevakning");
         menuItem2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                inputArea.append(e.getActionCommand());
+                new MonitorStockDialog("Lägg till bevakning");
             }
         });
         mainMenu.add(menuItem2);
@@ -132,14 +132,18 @@ public class MainFrame extends JFrame {
     }
 
     private void displayProducts(ArrayList<Product> productList) {
-        for (Product p :
-                productList) {
-            this.resultArea.append(p.toString());
+        for (Product p : productList) {
+            this.resultArea.append(p.toString() + "\n");
         }
         // TODO display the products
     }
 
     public void setController(Controller controller) {
         this.controller = controller;
+    }
+
+    @Override
+    public void runProgram() {
+        // TODO
     }
 }

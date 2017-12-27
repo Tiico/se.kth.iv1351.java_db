@@ -2,10 +2,40 @@ package model;
 
 public class Product {
 
-    //TODO DO THIS GUISE
+    private String name;
+    private String platform;
+    private String barcode;
+
+    public Product(String name, String platform, String barcode) {
+        this.name = name;
+        this.platform = platform;
+        this.barcode = barcode;
+    }
+
+    public Product(String name, String platform) {
+        this.name = name;
+        this.platform = platform;
+    }
+
+    public Product(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getPlatform() {
+        return platform;
+    }
 
     @Override
     public String toString() {
-        return "Change me: Product";
+        String strRep = String.format("%s för %s", name, platform);
+        return strRep;
+    }
+
+    public String getBarcode() {
+        return barcode;
     }
 }
